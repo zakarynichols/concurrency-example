@@ -10,6 +10,7 @@ func sum(s []int, c chan int) {
 		sum += v
 	}
 	c <- sum // send sum to c
+	close(c) // close channel early to force panic
 }
 
 func main() {
