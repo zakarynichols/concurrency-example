@@ -19,4 +19,12 @@ func main() {
 	go sum(s[len(s)/2:], c) // s[len(s)/2:] === s[len(s)/2:6] === []int{-9, 4, 0}
 	x, y := <-c, <-c        // receive from c
 	fmt.Println(x, y, x+y)
+
+	const max_buffer_len = 2
+	ch := make(chan int, max_buffer_len) // initialize with a max buffer length
+	ch <- 1
+	ch <- 2
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	fmt.Println(<-ch) // force a deadlock
 }
