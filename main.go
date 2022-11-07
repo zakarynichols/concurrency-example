@@ -10,6 +10,7 @@ func sum(s []int, c chan int) {
 		sum += v
 	}
 	c <- sum // send sum to c
+	fmt.Printf("sent %d to chan %p\n", sum, c)
 	// close(c) // close channel early to force panic
 }
 
