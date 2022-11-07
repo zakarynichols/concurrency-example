@@ -10,7 +10,7 @@ func sum(s []int, c chan int) {
 		sum += v
 	}
 	c <- sum // send sum to c
-	close(c) // close channel early to force panic
+	// close(c) // close channel early to force panic
 }
 
 func main() {
@@ -27,5 +27,5 @@ func main() {
 	ch <- 2
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
-	fmt.Println(<-ch) // force a deadlock
+	// fmt.Println(<-ch) // force a deadlock
 }
